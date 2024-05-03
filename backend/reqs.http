@@ -1,0 +1,141 @@
+# User register
+Post http://localhost:4000/user
+Content-Type: application/json
+
+{
+  "firstname":"Ravi",
+  "lastname":"kumar",
+  "username":"ravi",
+  "password":"ravi",
+  "email":"ravi@gmail.com",
+  "yexp":4,
+  "rating":4.5,
+  "likes":[]
+}
+
+### User login
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+  "username":"lokesh",
+  "password":"lokesh"
+}
+
+### Posting recipe
+POST http://localhost:4000/recipe
+Content-Type: application/json
+
+{
+  "recipeid": "{{$timestamp}}",
+  "title": "Maggie",
+  "foodType": "veg",
+  "ingredients":[
+    "Maggie",
+    "Yogurt",
+    "Lemon juice",
+    "Ginger-garlic paste",
+    "Tandoori masala",
+    "Paprika",
+    "Turmeric",
+    "Cumin",
+    "Coriander",
+    "Cayenne pepper (optional, for extra spice)",
+    "Salt",
+    "Vegetable oil"
+],
+  "cookTime":40,
+  "procedure": "Marinate maggie with water and tandoori spices. Grill until charred and cooked through.",
+  "description": "A classic Indian favorite! Perfect for BBQs and gatherings.",
+  "image": "https://t4.ftcdn.net/jpg/03/67/31/89/360_F_367318954_4ttRBcmaa22q30OsJRqflxgCOd9dB9t6.jpg",
+  "dateOfCreation": "{{$datetime iso8601}}",
+  "dateOfModification": "{{$datetime iso8601}}",
+  "username": "ravi",
+  "reviews": [],
+  "rating": 4.8,
+  "status": false
+}
+
+###get all recipes
+GET http://localhost:4000/recipe
+
+###update recipe by user
+PUT http://localhost:4000/recipe
+Content-Type: application/json
+
+{
+  "recipeid": "1711097684",
+  "title": "Chicken Biryani",
+  "foodType": "nonveg",
+  "ingredients":[ ],
+  "cookTime":3,
+  "procedure": "preparation",
+  "description": "description",
+  "image": "",
+  "dateOfCreation": "2024-03-22T07:19:42.512Z",
+  "dateOfModification": "{{$datetime iso8601}}",
+  "username": "ravi",
+  "reviews": [],
+  "rating": 4.5,
+  "status": true
+}
+
+###delete recipe by id
+PUT http://localhost:4000/recipe/1711097684
+Content-Type: application/json
+
+{
+  "recipeid": "1711097684",
+  "title": "Chicken Biryani",
+  "foodType": "nonveg",
+  "ingredients":[ ],
+  "cookTime":3,
+  "procedure": "preparation",
+  "description": "description",
+  "image": "",
+  "dateOfCreation": "2024-03-22T07:19:42.512Z",
+  "dateOfModification": "{{$datetime iso8601}}",
+  "username": "ravi",
+  "reviews": [],
+  "rating": 4.5,
+  "status": true
+}
+
+###get recipes of user
+GET  http://localhost:4000/recipes/ravi
+
+### restore recipe by id
+PUT http://localhost:4000/restorerecipe/1711097684
+Content-Type: application/json
+
+{
+  "recipeid": "1711097684",
+  "title": "Chicken Biryani",
+  "foodType": "nonveg",
+  "ingredients":[ ],
+  "cookTime":3,
+  "procedure": "preparation",
+  "description": "description",
+  "image": "",
+  "dateOfCreation": "2024-03-22T07:19:42.512Z",
+  "dateOfModification": "{{$datetime iso8601}}",
+  "username": "ravi",
+  "reviews": [],
+  "rating": 4.5,
+  "status": false
+}
+
+###Read deleated by user
+GET http://localhost:4000/deletedRecipes/ravi
+
+### review by a user
+POST http://localhost:4000/review/1711130091
+Content-Type: application/json
+
+{
+  "rating":4,
+  "review":"This is good recipe"
+}
+
+### get recipe from recipe id
+GET http://localhost:4000/recipe/1711130091
